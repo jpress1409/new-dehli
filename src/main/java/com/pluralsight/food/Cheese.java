@@ -1,14 +1,12 @@
-package com.pluralsight.food.premium.toppings;
+package com.pluralsight.food;
 
-import com.pluralsight.food.standard.toppings.Topping;
-
-public class Cheese extends Topping {
+public class Cheese extends PremiumTopping {
     private static double price = 1;
     private static double quantity;
     private String name;
 
-    public Cheese() {
-        super();
+    public Cheese(String name) {
+        super(name);
 
     }
 

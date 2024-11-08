@@ -1,6 +1,4 @@
-package com.pluralsight.food.main;
-
-import com.pluralsight.food.standard.toppings.Topping;
+package com.pluralsight.food;
 
 import java.util.List;
 

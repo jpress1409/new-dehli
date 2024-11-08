@@ -1,64 +1,71 @@
 package com.pluralsight.proccessing;
 
-import com.pluralsight.food.standard.toppings.Topping;
+import com.pluralsight.food.PremiumTopping;
+import com.pluralsight.food.StandardTopping;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShopFileManager {
 
-    public static void displayList(List<Topping> toppings){
-        for (Topping topping : toppings){
+    public static void displayPremiumList(List<PremiumTopping> toppings){
+        for (PremiumTopping topping : toppings){
             System.out.println(topping);
         }
     }
-    public static List<Topping> listSauces(){
-        List<Topping> sauces = new ArrayList<>();
+    public static void displayLStandardList(List<StandardTopping> toppings){
+        for (StandardTopping topping : toppings){
+            System.out.println(topping);
+        }
+    }
+    public static List<StandardTopping> listSauces(){
+        List<StandardTopping> sauces = new ArrayList<>();
 
-        sauces.add(new Topping("Mayo"));
-        sauces.add(new Topping("Mustard"));
-        sauces.add(new Topping("Ketchup"));
-        sauces.add(new Topping("Thousand Island"));
-        sauces.add(new Topping("Vinaigrette"));
-        sauces.add(new Topping("Ranch"));
+        sauces.add(new StandardTopping("Mayo"));
+        sauces.add(new StandardTopping("Mustard"));
+        sauces.add(new StandardTopping("Ketchup"));
+        sauces.add(new StandardTopping("Thousand Island"));
+        sauces.add(new StandardTopping("Vinaigrette"));
+        sauces.add(new StandardTopping("Ranch"));
 
         return sauces;
     }
-    public static List<Topping> listToppings(){
-        List<Topping> toppings = new ArrayList<>();
+    public static List<StandardTopping> listToppings(){
+        List<StandardTopping> toppings = new ArrayList<>();
 
-        toppings.add(new Topping("Lettuce"));
-        toppings.add(new Topping("Peppers"));
-        toppings.add(new Topping("Onions"));
-        toppings.add(new Topping("Tomatoes"));
-        toppings.add(new Topping("Jalapenos"));
-        toppings.add(new Topping("Cucumber"));
-        toppings.add(new Topping("Pickles"));
-        toppings.add(new Topping("Guacamole"));
-        toppings.add(new Topping("Mushrooms"));
+        toppings.add(new StandardTopping("Lettuce"));
+        toppings.add(new StandardTopping("Peppers"));
+        toppings.add(new StandardTopping("Onions"));
+        toppings.add(new StandardTopping("Tomatoes"));
+        toppings.add(new StandardTopping("Jalapenos"));
+        toppings.add(new StandardTopping("Cucumber"));
+        toppings.add(new StandardTopping("Pickles"));
+        toppings.add(new StandardTopping("Guacamole"));
+        toppings.add(new StandardTopping("Mushrooms"));
 
         return toppings;
     }
-    public static List<Topping> listCheese(){
-        List<Topping> cheeses = new ArrayList<>();
+    public static List<PremiumTopping> listCheese(){
+        List<PremiumTopping> cheeses = new ArrayList<>();
 
-        cheeses.add(new Topping("American"));
-        cheeses.add(new Topping("Provolone"));
-        cheeses.add(new Topping("Cheddar"));
-        cheeses.add(new Topping("Swiss"));
+        cheeses.add(new PremiumTopping("American"));
+        cheeses.add(new PremiumTopping("Provolone"));
+        cheeses.add(new PremiumTopping("Cheddar"));
+        cheeses.add(new PremiumTopping("Swiss"));
 
         return cheeses;
     }
 
-    public static List<Topping> listMeat(){
-        List<Topping> meats = new ArrayList<>();
+    public static List<PremiumTopping> listMeat(){
+        List<PremiumTopping> meats = new ArrayList<>();
 
-        meats.add(new Topping("Steak"));
-        meats.add(new Topping("Ham"));
-        meats.add(new Topping("Salami"));
-        meats.add(new Topping("Roast Beef"));
-        meats.add(new Topping("Chicken"));
-        meats.add(new Topping("Bacon"));
+        meats.add(new PremiumTopping("Steak"));
+        meats.add(new PremiumTopping("Ham"));
+        meats.add(new PremiumTopping("Salami"));
+        meats.add(new PremiumTopping("Roast Beef"));
+        meats.add(new PremiumTopping("Chicken"));
+        meats.add(new PremiumTopping("Bacon"));
 
         return meats;
     }
