@@ -1,7 +1,6 @@
 package com.pluralsight.proccessing;
 
-import com.pluralsight.food.PremiumTopping;
-import com.pluralsight.food.StandardTopping;
+import com.pluralsight.food.*;
 
 
 import java.util.ArrayList;
@@ -9,30 +8,29 @@ import java.util.List;
 
 public class ShopFileManager {
 
-    public static void displayPremiumList(List<PremiumTopping> toppings){
-        for (PremiumTopping topping : toppings){
-            System.out.println(topping);
-        }
-    }
-    public static void displayLStandardList(List<StandardTopping> toppings){
-        for (StandardTopping topping : toppings){
-            System.out.println(topping);
-        }
-    }
-    public static List<StandardTopping> listSauces(){
-        List<StandardTopping> sauces = new ArrayList<>();
+    public static void displayList(List<Topping> toppings){
 
-        sauces.add(new StandardTopping("Mayo"));
-        sauces.add(new StandardTopping("Mustard"));
-        sauces.add(new StandardTopping("Ketchup"));
-        sauces.add(new StandardTopping("Thousand Island"));
-        sauces.add(new StandardTopping("Vinaigrette"));
-        sauces.add(new StandardTopping("Ranch"));
+        for (Topping topping : toppings){
+                if(topping instanceof Cheese cheese) {
+                    System.out.println(cheese);
+                }
+        }
+    }
+
+    public static List<Topping> listSauces(){
+        List<Topping> sauces = new ArrayList<>();
+
+        sauces.add(new Sauce("Mayo"));
+        sauces.add(new Sauce("Mustard"));
+        sauces.add(new Sauce("Ketchup"));
+        sauces.add(new Sauce("Thousand Island"));
+        sauces.add(new Sauce("Vinaigrette"));
+        sauces.add(new Sauce("Ranch"));
 
         return sauces;
     }
-    public static List<StandardTopping> listToppings(){
-        List<StandardTopping> toppings = new ArrayList<>();
+    public static List<Topping> listToppings(){
+        List<Topping> toppings = new ArrayList<>();
 
         toppings.add(new StandardTopping("Lettuce"));
         toppings.add(new StandardTopping("Peppers"));
@@ -46,26 +44,26 @@ public class ShopFileManager {
 
         return toppings;
     }
-    public static List<PremiumTopping> listCheese(){
-        List<PremiumTopping> cheeses = new ArrayList<>();
+    public static List<Topping> listCheese(){
+        List<Topping> cheeses = new ArrayList<>();
 
-        cheeses.add(new PremiumTopping("American"));
-        cheeses.add(new PremiumTopping("Provolone"));
-        cheeses.add(new PremiumTopping("Cheddar"));
-        cheeses.add(new PremiumTopping("Swiss"));
+        cheeses.add(new Cheese("American"));
+        cheeses.add(new Cheese("Provolone"));
+        cheeses.add(new Cheese("Cheddar"));
+        cheeses.add(new Cheese("Swiss"));
 
         return cheeses;
     }
 
-    public static List<PremiumTopping> listMeat(){
-        List<PremiumTopping> meats = new ArrayList<>();
+    public static List<Topping> listMeat(){
+        List<Topping> meats = new ArrayList<>();
 
-        meats.add(new PremiumTopping("Steak"));
-        meats.add(new PremiumTopping("Ham"));
-        meats.add(new PremiumTopping("Salami"));
-        meats.add(new PremiumTopping("Roast Beef"));
-        meats.add(new PremiumTopping("Chicken"));
-        meats.add(new PremiumTopping("Bacon"));
+        meats.add(new Meat("Steak"));
+        meats.add(new Meat("Ham"));
+        meats.add(new Meat("Salami"));
+        meats.add(new Meat("Roast Beef"));
+        meats.add(new Meat("Chicken"));
+        meats.add(new Meat("Bacon"));
 
         return meats;
     }

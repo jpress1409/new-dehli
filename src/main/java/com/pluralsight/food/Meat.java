@@ -1,7 +1,7 @@
 package com.pluralsight.food;
 
 
-public class Meat extends PremiumTopping {
+public class Meat extends Topping {
     private static double price = 1;
     private static int quantity;
     private String name;

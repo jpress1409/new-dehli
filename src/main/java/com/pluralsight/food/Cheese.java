@@ -1,6 +1,6 @@
 package com.pluralsight.food;
 
-public class Cheese extends PremiumTopping {
+public class Cheese extends Topping {
     private static double price = 1;
     private static double quantity;
     private String name;
@@ -12,14 +12,6 @@ public class Cheese extends PremiumTopping {
 
     public static double calcPrice(){
         return price * getQuantity();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public static double getQuantity() {

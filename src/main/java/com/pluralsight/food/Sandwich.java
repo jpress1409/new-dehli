@@ -6,9 +6,9 @@ public class Sandwich {
     private String bread;
     private String size;
     private boolean toasted;
-    List<Topping> toppings;
 
     public Sandwich() {
+        toasted = false;
     }
 
     public String getBread() {
