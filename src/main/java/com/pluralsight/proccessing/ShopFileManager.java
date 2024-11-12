@@ -11,9 +11,9 @@ public class ShopFileManager {
     public static void displayList(List<Topping> toppings){
 
         for (Topping topping : toppings){
-                if(topping instanceof Cheese cheese) {
-                    System.out.println(cheese);
-                }
+
+                    System.out.println(topping);
+
         }
     }
 

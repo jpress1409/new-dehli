@@ -1,10 +1,11 @@
 package com.pluralsight.food;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Sandwich {
     private String bread;
-    private String size;
+    private static String size;
     private boolean toasted;
 
     public Sandwich() {
@@ -19,12 +20,12 @@ public class Sandwich {
         this.bread = bread;
     }
 
-    public String getSize() {
+    public static String getSize() {
         return size;
     }
 
     public void setSize(String size) {
-        this.size = size;
+        Sandwich.size = size;
     }
 
     public boolean isToasted() {
@@ -33,5 +34,19 @@ public class Sandwich {
 
     public void setToasted(boolean toasted) {
         this.toasted = toasted;
+    }
+    public static String[] listBread(){
+        String[] breads = new String[4];
+        breads[0] = "White";
+        breads[1] = "Wheat";
+        breads[2] = "Rye";
+        breads[3] = "Wrap";
+
+        return breads;
+    }
+    public static void displayBread(String [] breads){
+        for(String bread : breads){
+            System.out.println(bread);
+        }
     }
 }

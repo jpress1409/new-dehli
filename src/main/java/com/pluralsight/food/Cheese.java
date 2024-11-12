@@ -11,7 +11,13 @@ public class Cheese extends Topping {
     }
 
     public static double calcPrice(){
-        return price * getQuantity();
+        if(Sandwich.getSize().equalsIgnoreCase("Small")) {
+            return .75 * getQuantity();
+        }
+        if(Sandwich.getSize().equalsIgnoreCase("Medium")){
+            return 1.5 * getQuantity();
+        }
+        return 2.25 * getQuantity();
     }
 
     public static double getQuantity() {
