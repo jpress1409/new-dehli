@@ -6,10 +6,23 @@ import java.util.List;
 public class Sandwich {
     private String bread;
     private static String size;
-    private boolean toasted;
+    private static boolean toasted;
+    private static double price;
 
-    public Sandwich() {
+    public Sandwich(String size, String bread, Meat meat, Cheese cheese, List<Sauce> sauces, List<StandardTopping> toppings, boolean toasted) {
         toasted = false;
+    }
+    public static double calcPrice(){
+        double price = 0;
+        if(getSize().equalsIgnoreCase("Small")){
+            price = Meat.getPrice() + Cheese.getPrice() + 5.5;
+        } if(getSize().equalsIgnoreCase("Medium")){
+            price = Meat.getPrice() + Cheese.getPrice() + 7;
+        }
+        if(getSize().equalsIgnoreCase("Large")){
+            price = Meat.getPrice() + Cheese.getPrice() + 8.5;
+        }
+        return price;
     }
 
     public String getBread() {
@@ -28,12 +41,12 @@ public class Sandwich {
         Sandwich.size = size;
     }
 
-    public boolean isToasted() {
+    public static boolean isToasted() {
         return toasted;
     }
 
-    public void setToasted(boolean toasted) {
-        this.toasted = toasted;
+    public static void setToasted(boolean toasted) {
+        Sandwich.toasted = toasted;
     }
     public static String[] listBread(){
         String[] breads = new String[4];

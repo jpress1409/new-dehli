@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class OrderSandwich {
 
-    Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
 
-    public static String breadSelect(Scanner scan){
+    public static String breadSelect(){
         Sandwich.displayBread(Sandwich.listBread());
 
         System.out.println("What bread would you like? ");
@@ -20,7 +20,7 @@ public class OrderSandwich {
 
         return bread;
     }
-    public static String sizeSelect(Scanner scan){
+    public static String sizeSelect(){
         System.out.println("What size sandwich?");
         System.out.println("(1) 8");
         System.out.println("(2) 11");
@@ -35,7 +35,7 @@ public class OrderSandwich {
         }
         return "";
     }
-    public static Meat meatSelect(Scanner scan){
+    public static Meat meatSelect(){
 
         Meat meat = new Meat("");
         ShopFileManager.displayList(ShopFileManager.listMeat());
@@ -46,7 +46,7 @@ public class OrderSandwich {
 
         return meat;
     }
-    public static Cheese cheeseSelect(Scanner scan){
+    public static Cheese cheeseSelect(){
         Cheese cheese = new Cheese("");
 
         ShopFileManager.displayList(ShopFileManager.listCheese());
@@ -57,7 +57,7 @@ public class OrderSandwich {
 
         return cheese;
     }
-    public static List<StandardTopping> toppingSelect(Scanner scan){
+    public static List<StandardTopping> toppingSelect(){
         List<StandardTopping> toppings = new ArrayList<>();
         String toppingName = "";
         ShopFileManager.displayList(ShopFileManager.listToppings());
@@ -71,7 +71,7 @@ public class OrderSandwich {
         }
         return toppings;
     }
-    public static List<Sauce> sauceSelect(Scanner scan){
+    public static List<Sauce> sauceSelect(){
         List<Sauce> sauces = new ArrayList<>();
         String sauceName = "";
         ShopFileManager.displayList(ShopFileManager.listSauces());
@@ -84,5 +84,23 @@ public class OrderSandwich {
             sauces.add(new Sauce(sauceName));
         }
         return sauces;
+    }
+    public static boolean sandwichToasted(){
+        int choice = scan.nextInt();
+
+        if(choice == 1){
+            return true;
+        }
+
+        return false;
+    }
+    public static List<Sandwich> sandwiches(){
+        List<Sandwich> sandwiches = new ArrayList<>();
+
+        for(Sandwich sandwich : sandwiches){
+            sandwiches.add(new Sandwich(sizeSelect(), breadSelect(), meatSelect(), cheeseSelect(), sauceSelect(), toppingSelect(), sandwichToasted()));
+        }
+
+        return sandwiches;
     }
 }
