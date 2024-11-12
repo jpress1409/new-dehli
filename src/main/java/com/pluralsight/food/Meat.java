@@ -10,7 +10,7 @@ public class Meat extends Topping {
         super(name);
     }
 
-    public static double getPrice(){
+   public static double getPrice(){
         if(Sandwich.getSize().equalsIgnoreCase("Small")){
         return 1 * getQuantity();}
         if(Sandwich.getSize().equalsIgnoreCase("Medium")){

@@ -10,7 +10,7 @@ public class Cheese extends Topping {
 
     }
 
-    public static double getPrice(){
+   public static double getPrice(){
         if(Sandwich.getSize().equalsIgnoreCase("Small")) {
             return .75 * getQuantity();
         }

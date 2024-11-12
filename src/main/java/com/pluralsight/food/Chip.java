@@ -1,10 +1,10 @@
 package com.pluralsight.food;
 
-public class Chips {
+public class Chip {
     private String type;
     private double price;
 
-    public Chips(String type, double price) {
+    public Chip(String type) {
         this.type = type;
         this.price = 0.75;
     }
