@@ -2,82 +2,73 @@ package com.pluralsight.proccessing;
 
 import com.pluralsight.food.*;
 
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ShopFileManager {
 
-    public static List<Sauce> listSauces(){
-        List<Sauce> sauces = new ArrayList<>();
-
-        sauces.add(new Sauce("Mayo"));
-        sauces.add(new Sauce("Mustard"));
-        sauces.add(new Sauce("Ketchup"));
-        sauces.add(new Sauce("Thousand Island"));
-        sauces.add(new Sauce("Vinaigrette"));
-        sauces.add(new Sauce("Ranch"));
-
-        return sauces;
-    }
-    public static List<StandardTopping> listToppings(){
-        List<StandardTopping> toppings = new ArrayList<>();
-
-        toppings.add(new StandardTopping("Lettuce"));
-        toppings.add(new StandardTopping("Peppers"));
-        toppings.add(new StandardTopping("Onions"));
-        toppings.add(new StandardTopping("Tomatoes"));
-        toppings.add(new StandardTopping("Jalapenos"));
-        toppings.add(new StandardTopping("Cucumber"));
-        toppings.add(new StandardTopping("Pickles"));
-        toppings.add(new StandardTopping("Guacamole"));
-        toppings.add(new StandardTopping("Mushrooms"));
-
-        return toppings;
-    }
-    public static List<Cheese> listCheese(){
-        List<Cheese> cheeses = new ArrayList<>();
-
-        cheeses.add(new Cheese("American"));
-        cheeses.add(new Cheese("Provolone"));
-        cheeses.add(new Cheese("Cheddar"));
-        cheeses.add(new Cheese("Swiss"));
-
-        return cheeses;
+    public static List<Sauce> listSauces() {
+        return Stream.of(
+                new Sauce("Mayo"),
+                new Sauce("Mustard"),
+                new Sauce("Ketchup"),
+                new Sauce("Thousand Island"),
+                new Sauce("Vinaigrette"),
+                new Sauce("Ranch")
+        ).collect(Collectors.toList());
     }
 
-    public static List<Meat> listMeat(){
-        List<Meat> meats = new ArrayList<>();
-
-        meats.add(new Meat("Steak"));
-        meats.add(new Meat("Ham"));
-        meats.add(new Meat("Salami"));
-        meats.add(new Meat("Roast Beef"));
-        meats.add(new Meat("Chicken"));
-        meats.add(new Meat("Bacon"));
-
-        return meats;
+    public static List<StandardTopping> listToppings() {
+        return Stream.of(
+                new StandardTopping("Lettuce"),
+                new StandardTopping("Peppers"),
+                new StandardTopping("Onions"),
+                new StandardTopping("Tomatoes"),
+                new StandardTopping("Jalapenos"),
+                new StandardTopping("Cucumber"),
+                new StandardTopping("Pickles"),
+                new StandardTopping("Guacamole"),
+                new StandardTopping("Mushrooms")
+        ).collect(Collectors.toList());
     }
-    public static List<Drink> listDrinks(){
-        List<Drink> drinks = new ArrayList<>();
 
-        drinks.add(new Drink("Coke"));
-        drinks.add(new Drink("Diet Coke"));
-        drinks.add(new Drink("Dr. Pepper"));
-        drinks.add(new Drink("Ginger Ale"));
-        drinks.add(new Drink("Root Beer"));
-
-        return drinks;
+    public static List<Cheese> listCheese() {
+        return Stream.of(
+                new Cheese("American"),
+                new Cheese("Provolone"),
+                new Cheese("Cheddar"),
+                new Cheese("Swiss")
+        ).collect(Collectors.toList());
     }
-    public static List<Chip> listChips(){
-        List<Chip> chips = new ArrayList<>();
 
-        chips.add(new Chip("BBQ"));
-        chips.add(new Chip("Salt & Vinegar"));
-        chips.add(new Chip("Original"));
-        chips.add(new Chip("Sour Cream & Onion"));
+    public static List<Meat> listMeat() {
+        return Stream.of(
+                new Meat("Steak"),
+                new Meat("Ham"),
+                new Meat("Salami"),
+                new Meat("Roast Beef"),
+                new Meat("Chicken"),
+                new Meat("Bacon")
+        ).collect(Collectors.toList());
+    }
 
+    public static List<Drink> listDrinks() {
+        return Stream.of(
+                new Drink("Coke"),
+                new Drink("Diet Coke"),
+                new Drink("Dr. Pepper"),
+                new Drink("Ginger Ale"),
+                new Drink("Root Beer")
+        ).collect(Collectors.toList());
+    }
 
-        return chips;
+    public static List<Chip> listChips() {
+        return Stream.of(
+                new Chip("BBQ"),
+                new Chip("Salt & Vinegar"),
+                new Chip("Original"),
+                new Chip("Sour Cream & Onion")
+        ).collect(Collectors.toList());
     }
 }
