@@ -128,10 +128,10 @@ public class OrderSandwich {
     }
     public static void createSandwich() {
         Sandwich sandwich = new Sandwich(
-                size,
-                bread,
-                meat,
-                cheese,
+                sizeSelect(),
+                breadSelect(),
+                meatSelect(),
+                cheeseSelect(),
                 toppingsSelect(),
                 saucesSelect(),
                 sandwichToasted()

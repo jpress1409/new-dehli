@@ -17,15 +17,17 @@ public class OrderDrink {
     return size;
     }
     public static String flavorSelect(){
-        String flavor;
-        System.out.println("Coke, Sprite, Dr. Pepper or Ginger Ale");
-        flavor = scan.nextLine();
+        System.out.println("What soda would you like?");
+        String flavor = scan.nextLine();
         return flavor;
     }
-    public static List<Drink> returnDrink(String size, String flavor){
+    public static List<Drink> returnDrinks(String size, String flavor){
         List<Drink> drinks = new ArrayList<>();
 
-        drinks.add(new Drink(flavor, size));
+        Drink drink = new Drink(flavor, size);
+        drink.setSize(size);
+
+        drinks.add(drink);
 
         return drinks;
     }

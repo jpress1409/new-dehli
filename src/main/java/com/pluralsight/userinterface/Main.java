@@ -3,6 +3,7 @@ package com.pluralsight.userinterface;
 
 import com.pluralsight.food.Chip;
 import com.pluralsight.food.Drink;
+import com.pluralsight.proccessing.ShopFileManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class Main {
 
     private static List<Chip> chips = new ArrayList<>();
-    private static List<Drink> drinks = new ArrayList<>();
+    private static List<Drink> drinks = ShopFileManager.listDrinks();
     private static List<Drink> selectedDrinks = new ArrayList<>();
     private static List<Chip> selectedChips = new ArrayList<>();
 
@@ -26,14 +27,6 @@ public class Main {
 
         String choice = "yes";
         while (choice.equalsIgnoreCase("yes")) {
-
-            OrderSandwich.sizeSelect();
-            OrderSandwich.breadSelect();
-            OrderSandwich.meatSelect();
-            OrderSandwich.cheeseSelect();
-            OrderSandwich.toppingsSelect();
-            OrderSandwich.saucesSelect();
-            OrderSandwich.sandwichToasted();
 
             OrderSandwich.createSandwich();
 
@@ -68,8 +61,8 @@ public class Main {
 
                 System.out.println("Size for drink " + (i + 1) + ":");
                 String size = OrderDrink.drinkSizeSelect();
-                size.toUpperCase();
-                
+
+                OrderDrink.returnDrinks(size, flavor);
 
                 selectedDrinks.add(new Drink(flavor, size));
             }
