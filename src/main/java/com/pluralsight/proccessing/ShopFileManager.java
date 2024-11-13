@@ -8,17 +8,8 @@ import java.util.List;
 
 public class ShopFileManager {
 
-    public static void displayList(List<Topping> toppings){
-
-        for (Topping topping : toppings){
-
-                    System.out.println(topping);
-
-        }
-    }
-
-    public static List<Topping> listSauces(){
-        List<Topping> sauces = new ArrayList<>();
+    public static List<Sauce> listSauces(){
+        List<Sauce> sauces = new ArrayList<>();
 
         sauces.add(new Sauce("Mayo"));
         sauces.add(new Sauce("Mustard"));
@@ -29,8 +20,8 @@ public class ShopFileManager {
 
         return sauces;
     }
-    public static List<Topping> listToppings(){
-        List<Topping> toppings = new ArrayList<>();
+    public static List<StandardTopping> listToppings(){
+        List<StandardTopping> toppings = new ArrayList<>();
 
         toppings.add(new StandardTopping("Lettuce"));
         toppings.add(new StandardTopping("Peppers"));
@@ -44,8 +35,8 @@ public class ShopFileManager {
 
         return toppings;
     }
-    public static List<Topping> listCheese(){
-        List<Topping> cheeses = new ArrayList<>();
+    public static List<Cheese> listCheese(){
+        List<Cheese> cheeses = new ArrayList<>();
 
         cheeses.add(new Cheese("American"));
         cheeses.add(new Cheese("Provolone"));
@@ -55,8 +46,8 @@ public class ShopFileManager {
         return cheeses;
     }
 
-    public static List<Topping> listMeat(){
-        List<Topping> meats = new ArrayList<>();
+    public static List<Meat> listMeat(){
+        List<Meat> meats = new ArrayList<>();
 
         meats.add(new Meat("Steak"));
         meats.add(new Meat("Ham"));
@@ -66,5 +57,27 @@ public class ShopFileManager {
         meats.add(new Meat("Bacon"));
 
         return meats;
+    }
+    public static List<Drink> listDrinks(){
+        List<Drink> drinks = new ArrayList<>();
+
+        drinks.add(new Drink("Coke"));
+        drinks.add(new Drink("Diet Coke"));
+        drinks.add(new Drink("Dr. Pepper"));
+        drinks.add(new Drink("Ginger Ale"));
+        drinks.add(new Drink("Root Beer"));
+
+        return drinks;
+    }
+    public static List<Chip> listChips(){
+        List<Chip> chips = new ArrayList<>();
+
+        chips.add(new Chip("BBQ"));
+        chips.add(new Chip("Salt & Vinegar"));
+        chips.add(new Chip("Original"));
+        chips.add(new Chip("Sour Cream & Onion"));
+
+
+        return chips;
     }
 }

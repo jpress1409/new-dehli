@@ -12,15 +12,20 @@ public class OrderSandwich {
     private static Scanner scan = new Scanner(System.in);
     private static String size;
     private static String bread;
-    private static Topping meat;
-    private static Topping cheese;
-    private static List<Topping> sauces;
-    private static List<Topping> toppings;
+    private static Meat meat;
+    private static List<Meat> meats = ShopFileManager.listMeat();
+    private static List<Cheese> cheeses = ShopFileManager.listCheese();
+    private static Cheese cheese;
+    private static List<Sauce> sauces = ShopFileManager.listSauces();
+    private static List<StandardTopping> toppings = ShopFileManager.listToppings();
     private static boolean toasted;
+    private static List<Sandwich> sandwiches = new ArrayList<>();
 
     public static String breadSelect(){
         Sandwich.displayBread(Sandwich.listBread());
-        return scan.nextLine();
+        bread = scan.nextLine();
+
+        return bread;
     }
     public static String sizeSelect(){
         System.out.println("What size sandwich?");
@@ -40,56 +45,71 @@ public class OrderSandwich {
         return size;
     }
     public static Meat meatSelect(){
+        for(Meat m : meats){
+            System.out.println(m.getName());
+        }
 
-        ShopFileManager.displayList(ShopFileManager.listMeat());
         System.out.println("Choose Meat: ");
         String meatName = scan.nextLine();
 
-        return new Meat(meatName);
+        meat = new Meat(meatName);
+        return meat;
     }
-    public static Topping cheeseSelect(){
-        ShopFileManager.displayList(ShopFileManager.listCheese());
+    public static Cheese cheeseSelect(){
+        for(Cheese c : cheeses){
+            System.out.println(c.getName());
+        }
         System.out.println("Choose cheese");
         String cheeseName = scan.nextLine();
+        cheese = new Cheese(cheeseName);
 
-        return new Cheese(cheeseName);
+        return cheese;
     }
-    public static List<Topping> toppingsSelect(){
-        List<Topping> toppings = new ArrayList<>();
-        String toppingName = "";
-        ShopFileManager.displayList(ShopFileManager.listToppings());
+    public static List<StandardTopping> toppingsSelect(){
+        List<StandardTopping> selectedToppings = new ArrayList<>();
 
+        for(StandardTopping t : toppings){
+            System.out.println(t.getName());
+        }
+
+        String toppingName = "";
         while(!toppingName.equalsIgnoreCase("x")){
-            System.out.println("Choose Suace:");
+
+            System.out.println("Choose Topping:");
             System.out.println("(x) when finished");
             toppingName = scan.nextLine();
-            StandardTopping topping = new StandardTopping(toppingName);
 
-            toppings.add(topping);
-
+            if (!toppingName.equalsIgnoreCase("x") && !toppingName.trim().isEmpty()) {
+                StandardTopping topping = new StandardTopping(toppingName);
+                selectedToppings.add(topping);
+            }
 
         }
 
 
-        return toppings;
+        return selectedToppings;
     }
-    public static List<Topping> saucesSelect(){
-        List<Topping> sauces = new ArrayList<>();
-        String sauceName = "";
-        ShopFileManager.displayList(ShopFileManager.listSauces());
+    public static List<Sauce> saucesSelect(){
+        List<Sauce> selectedSauces = new ArrayList<>();
 
+        for(Sauce s : sauces) {
+            System.out.println(s.getName());
+        }
+
+        String sauceName = "";
         while(!sauceName.equalsIgnoreCase("x")){
             System.out.println("Choose Suace:");
             System.out.println("(x) when finished");
             sauceName = scan.nextLine();
-            Sauce sauce = new Sauce(sauceName);
 
-            sauces.add(sauce);
-
+            if (!sauceName.equalsIgnoreCase("x") && !sauceName.trim().isEmpty()) {
+                Sauce sauce = new Sauce(sauceName);
+                selectedSauces.add(sauce);
+            }
 
         }
 
-        return sauces;
+        return selectedSauces;
     }
     public static boolean sandwichToasted(){
         System.out.println("Would you like the sandwich to be toasted?");
@@ -99,31 +119,36 @@ public class OrderSandwich {
         int choice = scan.nextInt();
 
         if(choice == 1){
-            return true;
+            toasted = true;
+        }else{
+            toasted = false;
         }
 
-        return false;
+        return toasted;
     }
-    public static List<Sandwich> sandwiches(){
-        List<Sandwich> sandwiches = new ArrayList<>();
-
+    public static void createSandwich() {
         Sandwich sandwich = new Sandwich(
-                sizeSelect(),
-                breadSelect(),
-                meatSelect(),
-                cheeseSelect(),
-                saucesSelect(),
+                size,
+                bread,
+                meat,
+                cheese,
                 toppingsSelect(),
+                saucesSelect(),
                 sandwichToasted()
-                );
-
+        );
         sandwiches.add(sandwich);
-
-        return sandwiches;
     }
-    public static void sandwichDisplay(List<Sandwich> sandwiches){
-        for(Sandwich sandwich : sandwiches){
+    public static void sandwichDisplay() {
+        for (Sandwich sandwich : sandwiches) {
             System.out.println(sandwich);
+            System.out.println("Price: " + sandwich.calcPrice());
         }
+    }
+    public static double totalPrice() {
+        double total = 0;
+        for (Sandwich sandwich : sandwiches) {
+            total += sandwich.calcPrice();
+        }
+        return total;
     }
 }

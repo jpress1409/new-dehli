@@ -3,35 +3,24 @@ package com.pluralsight.food;
 
 public class Meat extends Topping {
     private static double price;
-    private static int quantity;
-    private String name;
 
     public Meat(String name) {
         super(name);
     }
 
-   public static double getPrice(){
-        if(Sandwich.getSize().equalsIgnoreCase("Small")){
-        return 1 * getQuantity();}
-        if(Sandwich.getSize().equalsIgnoreCase("Medium")){
-            return 2 * getQuantity();
+    public static double getPrice(){
+        switch(Sandwich.getSize()){
+            case "Small" -> price = 1;
+            case "Medium" -> price = 2;
+            case "Large" -> price = 3;
         }
-        return 3 * getQuantity();
+        return price;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public static int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    @Override
+    public String toString() {
+        return "Meat{" +
+                "name='" + getName() + '\'' +
+                '}';
     }
 }

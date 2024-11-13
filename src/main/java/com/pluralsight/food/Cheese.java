@@ -1,9 +1,7 @@
 package com.pluralsight.food;
 
 public class Cheese extends Topping {
-    private static double price = 1;
-    private static double quantity;
-    private String name;
+    private static double price;
 
     public Cheese(String name) {
         super(name);
@@ -11,21 +9,18 @@ public class Cheese extends Topping {
     }
 
    public static double getPrice(){
-        if(Sandwich.getSize().equalsIgnoreCase("Small")) {
-            return .75 * getQuantity();
+        switch(Sandwich.getSize()){
+            case "Small" -> price = 0.75;
+            case "Medium" -> price = 1.5;
+            case "Large" -> price = 2.25;
         }
-        if(Sandwich.getSize().equalsIgnoreCase("Medium")){
-            return 1.5 * getQuantity();
-        }
-        return 2.25 * getQuantity();
+        return price;
     }
 
-    public static double getQuantity() {
-        return quantity;
+    @Override
+    public String toString() {
+        return "Cheese{" +
+                "name='" + getName() + '\'' +
+                '}';
     }
-
-    public static void setQuantity(double quantity) {
-        Cheese.quantity = quantity;
-    }
-
 }

@@ -9,12 +9,11 @@ public class Sandwich {
     private boolean toasted;
     private double price;
     private Meat meat;
-    private Topping cheese;
-    private List<Topping> sauces;
-    private List<Topping> toppings;
+    private Cheese cheese;
+    private List<Sauce> sauces;
+    private List<StandardTopping> toppings;
 
-
-    public Sandwich(String size, String bread, Meat meat, Topping cheese, List<Topping> toppings, List<Topping> sauces, boolean toasted) {
+    public Sandwich(String size, String bread, Meat meat, Cheese cheese, List<StandardTopping> toppings, List<Sauce> sauces, boolean toasted) {
         this.toasted = toasted;
         Sandwich.size = size;
         this.bread = bread;
@@ -22,18 +21,19 @@ public class Sandwich {
         this.cheese = cheese;
         this.toppings = toppings;
         this.sauces = sauces;
+        this.price = price;
     }
 
     public double calcPrice(){
-        double price = 0;
-        if(getSize().equalsIgnoreCase("Small")){
-            price = Meat.getPrice() + Cheese.getPrice() + 5.5;
-        } if(getSize().equalsIgnoreCase("Medium")){
-            price = Meat.getPrice() + Cheese.getPrice() + 7;
+        return getPrice() + Meat.getPrice() + Cheese.getPrice();
+    }
+    public double getPrice(){
+        switch(getSize()){
+            case "Small" -> price = 5.5;
+            case "Medium" -> price = 7;
+            case "Large" -> price = 8.5;
         }
-        if(getSize().equalsIgnoreCase("Large")){
-            price = Meat.getPrice() + Cheese.getPrice() + 8.5;
-        }
+
         return price;
     }
 
