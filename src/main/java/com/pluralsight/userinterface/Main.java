@@ -19,6 +19,8 @@ public class Main {
     private static List<Drink> selectedDrinks = new ArrayList<>();
     private static List<Chip> selectedChips = new ArrayList<>();
     private static List<Sandwich> selectedSandwiches = new ArrayList<>();
+    private static int numChips;
+    private static int numDrinks;
 
 
     public static void main(String[] args) {
@@ -38,12 +40,14 @@ public class Main {
         System.out.println("Would you like chips?");
         String option = scan.nextLine();
         if (option.equalsIgnoreCase("Yes")) {
+
+            System.out.println("How many bags of chips would you like?");
+            numChips = scan.nextInt();
+            scan.nextLine();
+
             for(Chip chip : chips){
                 System.out.println(chip.getType());
             }
-            System.out.println("How many bags of chips would you like?");
-            int numChips = scan.nextInt();
-            scan.nextLine();
 
             OrderChip.chipSelect(numChips, selectedChips);
         }
@@ -52,7 +56,7 @@ public class Main {
         String input = scan.nextLine();
         if (input.equalsIgnoreCase("Yes")) {
             System.out.println("How many drinks would you like?");
-            int numDrinks = scan.nextInt();
+            numDrinks = scan.nextInt();
             scan.nextLine();
 
             for(Drink drink : drinks){
@@ -66,25 +70,27 @@ public class Main {
                 selectedDrinks.add(OrderDrink.returnDrinks(size, flavor));
             }
         }
+        System.out.println("Order:");
+        OrderSandwich.sandwichDisplay(selectedSandwiches);
 
         System.out.println("Your total is: ");
-        System.out.println(totalPrice(selectedChips, selectedDrinks, selectedSandwiches));
+        System.out.println(totalPrice(selectedChips, selectedDrinks, selectedSandwiches, numChips, numDrinks));
 
     }
-    public static double totalPrice(List<Chip> chips, List<Drink> drinks, List<Sandwich> sandwiches){
+    public static double totalPrice(List<Chip> chips, List<Drink> drinks, List<Sandwich> sandwiches, int chipQuant, int drinkQuant){
         double total = 0;
 
         for(Sandwich sandwich : sandwiches){
-            total += sandwich.calcPrice();
+            total += sandwich.getPrice();
         }
 
 
         for(Chip chip : chips){
-           total += chip.calcPrice();
+           total += (chip.getPrice() * chipQuant);
         }
 
         for(Drink drink : drinks){
-            total += drink.calcPrice();
+            total += (drink.calcPrice() * drinkQuant);
         }
 
         return total;

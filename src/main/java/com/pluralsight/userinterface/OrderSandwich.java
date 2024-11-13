@@ -136,10 +136,9 @@ public class OrderSandwich {
                 saucesSelect(),
                 sandwichToasted());
     }
-    public static void sandwichDisplay() {
+    public static void sandwichDisplay(List<Sandwich> sandwiches) {
         for (Sandwich sandwich : sandwiches) {
             System.out.println(sandwich);
-            System.out.println("Price: " + sandwich.calcPrice());
         }
     }
 

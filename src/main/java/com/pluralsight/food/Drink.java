@@ -7,14 +7,12 @@ public class Drink {
 
     public Drink(String flavor, String size) {
         this.flavor = flavor;
-        this.price = price;
+        this.price = calcPrice();
         this.size = size;
     }
 
     public Drink(String flavor) {
         this.flavor = flavor;
-        this.price = price;
-        this.size = "M";
     }
 
     public String getFlavor() {
@@ -32,7 +30,6 @@ public class Drink {
 
     public void setSize(String size) {
         this.size = size;
-        this.price = calcPrice();
     }
     public double calcPrice() {
         switch (getSize()) {
@@ -40,7 +37,6 @@ public class Drink {
             case "M" -> price = 2;
             case "L" -> price = 3;
         }
-
         return price;
     }
 

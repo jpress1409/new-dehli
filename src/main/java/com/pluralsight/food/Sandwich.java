@@ -21,12 +21,9 @@ public class Sandwich {
         this.cheese = cheese;
         this.toppings = toppings;
         this.sauces = sauces;
-        this.price = price;
+        this.price = getPrice();
     }
 
-    public double calcPrice(){
-        return getPrice() + Meat.getPrice() + Cheese.getPrice();
-    }
     public double getPrice(){
         switch(getSize()){
             case "Small" -> price = 5.5;

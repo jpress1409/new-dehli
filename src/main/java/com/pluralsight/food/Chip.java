@@ -7,7 +7,7 @@ public class Chip {
 
     public Chip(String type) {
         this.type = type;
-        this.price = 0.75;
+        this.price = price;
         this.quantity = 0;
     }
 
@@ -19,17 +19,10 @@ public class Chip {
         this.type = type;
     }
 
-    public double calcPrice() {
-        return 0.75 * getQuantity();
+    public double getPrice() {
+        return 0.75;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     @Override
     public String toString() {

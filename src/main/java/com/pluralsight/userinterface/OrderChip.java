@@ -16,7 +16,6 @@ public class OrderChip {
                     String flavor = scan.nextLine();
                     Chip chip = new Chip(flavor);
                     selectedChips.add(chip);
-                    chip.setQuantity(i);
                 }
 
     }
