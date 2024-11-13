@@ -31,4 +31,12 @@ public class Chip {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return "Chip{" +
+                "type='" + type + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

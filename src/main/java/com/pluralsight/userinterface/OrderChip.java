@@ -12,7 +12,7 @@ public class OrderChip {
 
     public static void chipSelect(int chipNum, List<Chip> selectedChips){
                 for(int i = 0; i < chipNum; i++){
-                    System.out.println("What flavor would you like?");
+                    System.out.println("Flavor for bag " + (i + 1));
                     String flavor = scan.nextLine();
                     Chip chip = new Chip(flavor);
                     selectedChips.add(chip);

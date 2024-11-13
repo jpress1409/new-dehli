@@ -3,6 +3,7 @@ package com.pluralsight.userinterface;
 
 import com.pluralsight.food.Chip;
 import com.pluralsight.food.Drink;
+import com.pluralsight.food.Sandwich;
 import com.pluralsight.proccessing.ShopFileManager;
 
 import java.util.ArrayList;
@@ -13,10 +14,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static List<Chip> chips = new ArrayList<>();
+    private static List<Chip> chips = ShopFileManager.listChips();
     private static List<Drink> drinks = ShopFileManager.listDrinks();
     private static List<Drink> selectedDrinks = new ArrayList<>();
     private static List<Chip> selectedChips = new ArrayList<>();
+    private static List<Sandwich> selectedSandwiches = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -27,8 +29,7 @@ public class Main {
 
         String choice = "yes";
         while (choice.equalsIgnoreCase("yes")) {
-
-            OrderSandwich.createSandwich();
+            selectedSandwiches.add(OrderSandwich.createSandwich());
 
             System.out.println("Would you like to order another sandwich?");
             choice = scan.nextLine();
@@ -37,6 +38,9 @@ public class Main {
         System.out.println("Would you like chips?");
         String option = scan.nextLine();
         if (option.equalsIgnoreCase("Yes")) {
+            for(Chip chip : chips){
+                System.out.println(chip.getType());
+            }
             System.out.println("How many bags of chips would you like?");
             int numChips = scan.nextInt();
             scan.nextLine();
@@ -52,37 +56,35 @@ public class Main {
             scan.nextLine();
 
             for(Drink drink : drinks){
-                System.out.println(drink);
+                System.out.println(drink.getFlavor());
             }
 
-            for (int i = 0; i < numDrinks; i++) {
-                System.out.println("Flavor for drink " + (i + 1) + ":");
+            for (int i = 0; i < numDrinks; i++){
                 String flavor = OrderDrink.flavorSelect();
+                String size = OrderDrink.drinkSizeSelect().toUpperCase();
 
-                System.out.println("Size for drink " + (i + 1) + ":");
-                String size = OrderDrink.drinkSizeSelect();
-
-                OrderDrink.returnDrinks(size, flavor);
-
-                selectedDrinks.add(new Drink(flavor, size));
+                selectedDrinks.add(OrderDrink.returnDrinks(size, flavor));
             }
         }
 
         System.out.println("Your total is: ");
-        System.out.println(totalPrice(selectedChips, selectedDrinks));
+        System.out.println(totalPrice(selectedChips, selectedDrinks, selectedSandwiches));
 
     }
-    public static double totalPrice(List<Chip> chips, List<Drink> drinks){
+    public static double totalPrice(List<Chip> chips, List<Drink> drinks, List<Sandwich> sandwiches){
         double total = 0;
 
-        OrderSandwich.totalPrice();
+        for(Sandwich sandwich : sandwiches){
+            total += sandwich.calcPrice();
+        }
+
 
         for(Chip chip : chips){
            total += chip.calcPrice();
         }
 
         for(Drink drink : drinks){
-            total += drink.getPrice();
+            total += drink.calcPrice();
         }
 
         return total;

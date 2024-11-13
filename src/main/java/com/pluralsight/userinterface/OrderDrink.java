@@ -11,9 +11,11 @@ public class OrderDrink {
     private static Scanner scan = new Scanner(System.in);
 
     public static String drinkSizeSelect(){
-        String size;
-        System.out.println("Small, Medium or Large?");
-        size = scan.nextLine();
+        System.out.println("(S)mall");
+        System.out.println("(M)edium");
+        System.out.println("(L)arge");
+       String size = scan.nextLine();
+
     return size;
     }
     public static String flavorSelect(){
@@ -21,14 +23,7 @@ public class OrderDrink {
         String flavor = scan.nextLine();
         return flavor;
     }
-    public static List<Drink> returnDrinks(String size, String flavor){
-        List<Drink> drinks = new ArrayList<>();
-
-        Drink drink = new Drink(flavor, size);
-        drink.setSize(size);
-
-        drinks.add(drink);
-
-        return drinks;
+    public static Drink returnDrinks(String size, String flavor){
+        return new Drink(size, flavor);
     }
 }

@@ -4,17 +4,17 @@ public class Drink {
     private String flavor;
     private double price;
     private String size;
-    private static int quantity;
 
     public Drink(String flavor, String size) {
         this.flavor = flavor;
         this.price = price;
-        this.size = this.size;
-        this.quantity = 0;
+        this.size = size;
     }
 
     public Drink(String flavor) {
         this.flavor = flavor;
+        this.price = price;
+        this.size = "M";
     }
 
     public String getFlavor() {
@@ -25,14 +25,6 @@ public class Drink {
         this.flavor = flavor;
     }
 
-    public double getPrice() {
-        if(getSize().equalsIgnoreCase("Small")){
-        return 2;}
-        if(getSize().equalsIgnoreCase("Medium")){
-            return 2.5;
-        }
-        return 3;
-    }
 
     public String getSize() {
         return size;
@@ -40,22 +32,26 @@ public class Drink {
 
     public void setSize(String size) {
         this.size = size;
+        this.price = calcPrice();
     }
-    public double calcPrice(){
-        switch(getSize()){
-            case "SMALL" -> price = 1;
-            case "MEDIUM" -> price = 2;
-            case "LARGE" -> price = 3;
+    public double calcPrice() {
+        switch (getSize()) {
+            case "S" -> price = 1;
+            case "M" -> price = 2;
+            case "L" -> price = 3;
         }
 
-        return price * getQuantity();
+        return price;
     }
 
-    public static int getQuantity() {
-        return quantity;
-    }
 
-    public static void setQuantity(int quantity) {
-        Drink.quantity = quantity;
+
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "flavor='" + flavor + '\'' +
+                ", price=" + price +
+                ", size='" + size + '\'' +
+                '}';
     }
 }

@@ -126,17 +126,15 @@ public class OrderSandwich {
 
         return toasted;
     }
-    public static void createSandwich() {
-        Sandwich sandwich = new Sandwich(
+    public static Sandwich createSandwich() {
+        return new Sandwich(
                 sizeSelect(),
                 breadSelect(),
                 meatSelect(),
                 cheeseSelect(),
                 toppingsSelect(),
                 saucesSelect(),
-                sandwichToasted()
-        );
-        sandwiches.add(sandwich);
+                sandwichToasted());
     }
     public static void sandwichDisplay() {
         for (Sandwich sandwich : sandwiches) {
@@ -144,11 +142,5 @@ public class OrderSandwich {
             System.out.println("Price: " + sandwich.calcPrice());
         }
     }
-    public static double totalPrice() {
-        double total = 0;
-        for (Sandwich sandwich : sandwiches) {
-            total += sandwich.calcPrice();
-        }
-        return total;
-    }
+
 }
