@@ -12,6 +12,8 @@ public abstract class Topping {
         return name;
     }
 
+    public abstract double calculatePrice(String size);
+
     @Override
     public String toString() {
         return "Topping{" +

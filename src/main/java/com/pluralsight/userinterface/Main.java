@@ -1,7 +1,7 @@
 package com.pluralsight.userinterface;
 
 
-import com.pluralsight.food.Chip;
+import com.pluralsight.food.Chips;
 import com.pluralsight.food.Drink;
 import com.pluralsight.food.Sandwich;
 import com.pluralsight.proccessing.ShopFileManager;
@@ -14,10 +14,10 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static List<Chip> chips = ShopFileManager.listChips();
+    private static List<Chips> chips = ShopFileManager.listChips();
     private static List<Drink> drinks = ShopFileManager.listDrinks();
     private static List<Drink> selectedDrinks = new ArrayList<>();
-    private static List<Chip> selectedChips = new ArrayList<>();
+    private static List<Chips> selectedChips = new ArrayList<>();
     private static List<Sandwich> selectedSandwiches = new ArrayList<>();
     private static int numChips;
     private static int numDrinks;
@@ -45,7 +45,7 @@ public class Main {
             numChips = scan.nextInt();
             scan.nextLine();
 
-            for(Chip chip : chips){
+            for(Chips chip : chips){
                 System.out.println(chip.getType());
             }
 
@@ -77,7 +77,7 @@ public class Main {
         System.out.println(totalPrice(selectedChips, selectedDrinks, selectedSandwiches, numChips, numDrinks));
 
     }
-    public static double totalPrice(List<Chip> chips, List<Drink> drinks, List<Sandwich> sandwiches, int chipQuant, int drinkQuant){
+    public static double totalPrice(List<Chips> chips, List<Drink> drinks, List<Sandwich> sandwiches, int chipQuant, int drinkQuant){
         double total = 0;
 
         for(Sandwich sandwich : sandwiches){
@@ -85,7 +85,7 @@ public class Main {
         }
 
 
-        for(Chip chip : chips){
+        for(Chips chip : chips){
            total += (chip.getPrice() * chipQuant);
         }
 

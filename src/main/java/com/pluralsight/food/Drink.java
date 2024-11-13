@@ -2,17 +2,11 @@ package com.pluralsight.food;
 
 public class Drink {
     private String flavor;
-    private double price;
     private String size;
 
     public Drink(String flavor, String size) {
         this.flavor = flavor;
-        this.price = calcPrice();
         this.size = size;
-    }
-
-    public Drink(String flavor) {
-        this.flavor = flavor;
     }
 
     public String getFlavor() {
@@ -31,15 +25,17 @@ public class Drink {
     public void setSize(String size) {
         this.size = size;
     }
+
+
     public double calcPrice() {
+        double price = 0;
         switch (getSize()) {
-            case "S" -> price = 1;
-            case "M" -> price = 2;
-            case "L" -> price = 3;
+            case "S" -> price = 2.00;
+            case "M" -> price = 2.50;
+            case "L" -> price = 3.00;
         }
         return price;
     }
-
 
 
     @Override

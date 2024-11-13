@@ -1,20 +1,18 @@
 package com.pluralsight.userinterface;
 
-import com.pluralsight.food.Chip;
-import com.pluralsight.proccessing.ShopFileManager;
+import com.pluralsight.food.Chips;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class OrderChip {
     private static Scanner scan = new Scanner(System.in);
 
-    public static void chipSelect(int chipNum, List<Chip> selectedChips){
+    public static void chipSelect(int chipNum, List<Chips> selectedChips){
                 for(int i = 0; i < chipNum; i++){
                     System.out.println("Flavor for bag " + (i + 1));
                     String flavor = scan.nextLine();
-                    Chip chip = new Chip(flavor);
+                    Chips chip = new Chips(flavor);
                     selectedChips.add(chip);
                 }
 

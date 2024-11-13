@@ -7,6 +7,11 @@ public class Sauce extends Topping {
     }
 
     @Override
+    public double calculatePrice(String size) {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return "Sauce{" +
                 "name='" + getName() + '\'' +

@@ -34,7 +34,7 @@ public class OrderDrink {
             for (Drink drink : drinks) {
                 if (drink.getFlavor().equalsIgnoreCase(flavor)) {
                     loop = true;
-                    break; 
+                    break;
                 }
             }
 

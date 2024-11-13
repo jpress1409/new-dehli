@@ -1,27 +1,25 @@
 package com.pluralsight.food;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Sandwich {
     private String bread;
-    private static String size;
+    private String size;
     private boolean toasted;
-    private double price;
-    private Meat meat;
-    private Cheese cheese;
-    private List<Sauce> sauces;
-    private List<StandardTopping> toppings;
+    private List<Topping> toppings;
 
-    public Sandwich(String size, String bread, Meat meat, Cheese cheese, List<StandardTopping> toppings, List<Sauce> sauces, boolean toasted) {
-        this.toasted = toasted;
-        Sandwich.size = size;
+    public Sandwich(String bread, String size, boolean toasted) {
         this.bread = bread;
-        this.meat = meat;
-        this.cheese = cheese;
-        this.toppings = toppings;
-        this.sauces = sauces;
-        this.price = getPrice();
+        this.size = size;
+        this.toasted = toasted;
+        this.toppings = new ArrayList<>();
+    }
+
+
+    public void addTopping(Topping topping){
+        toppings.add(topping);
     }
 
     public double getPrice(){

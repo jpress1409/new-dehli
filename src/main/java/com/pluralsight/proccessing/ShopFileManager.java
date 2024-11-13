@@ -63,12 +63,12 @@ public class ShopFileManager {
         ).collect(Collectors.toList());
     }
 
-    public static List<Chip> listChips() {
+    public static List<Chips> listChips() {
         return Stream.of(
-                new Chip("BBQ"),
-                new Chip("Salt & Vinegar"),
-                new Chip("Original"),
-                new Chip("Sour Cream & Onion")
+                new Chips("BBQ"),
+                new Chips("Salt & Vinegar"),
+                new Chips("Original"),
+                new Chips("Sour Cream & Onion")
         ).collect(Collectors.toList());
     }
 }

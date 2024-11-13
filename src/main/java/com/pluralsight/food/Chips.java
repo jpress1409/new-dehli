@@ -1,14 +1,10 @@
 package com.pluralsight.food;
 
-public class Chip {
+public class Chips {
     private String type;
-    private double price;
-    private int quantity;
 
-    public Chip(String type) {
+    public Chips(String type) {
         this.type = type;
-        this.price = price;
-        this.quantity = 0;
     }
 
     public String getType() {
@@ -20,16 +16,13 @@ public class Chip {
     }
 
     public double getPrice() {
-        return 0.75;
+        return 1.50;
     }
-
 
     @Override
     public String toString() {
-        return "Chip{" +
+        return "Chips{" +
                 "type='" + type + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
                 '}';
     }
 }

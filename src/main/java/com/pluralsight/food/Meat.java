@@ -2,17 +2,18 @@ package com.pluralsight.food;
 
 
 public class Meat extends Topping {
-    private static double price;
 
     public Meat(String name) {
         super(name);
     }
 
-    public static double getPrice(){
-        switch(Sandwich.getSize()){
-            case "Small" -> price = 1;
-            case "Medium" -> price = 2;
-            case "Large" -> price = 3;
+    @Override
+    public double calculatePrice(String size) {
+        double price = 0;
+        switch (size) {
+            case "Small" -> price = 1.00;
+            case "Medium" -> price = 2.00;
+            case "Large" -> price = 3.00;
         }
         return price;
     }
