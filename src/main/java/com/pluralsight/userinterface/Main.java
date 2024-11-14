@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        UserInterface ui = new UserInterface();
+        SandwichUserInterface ui = new SandwichUserInterface();
 
         OrderChip oc = new OrderChip();
         OrderDrink od = new OrderDrink();
@@ -31,27 +31,10 @@ public class Main {
 
         // Main loop for sandwich creation
         while (addAnother.equalsIgnoreCase("yes")) {
-            Sandwich sandwich = ui.createSandwich(scan); // Create a new sandwich
-            sandwiches.add(sandwich); // Add to the list of sandwiches
-
-            // Display sandwich details to the user
-            System.out.println("Sandwich created: ");
-            System.out.println(sandwich);
-
-            // Ask if the user wants to add another sandwich
-            System.out.println("Would you like to add another sandwich? (yes/no)");
-            addAnother = scan.nextLine();
-
-            // Handle invalid input for continuing
-            while (!addAnother.equalsIgnoreCase("yes") && !addAnother.equalsIgnoreCase("no")) {
-                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
-                addAnother = scan.nextLine();
-            }
+            ui.sandwichLoop(sandwiches, addAnother);
         }
 
-        for (Sandwich sandwich : sandwiches) {
-            totalPrice += sandwich.getPrice();
-        }
+        totalPrice = sandwiches.stream().mapToDouble(Sandwich::getPrice).sum();
 
         System.out.println("Would you like to add a drink?");
         String addDrink = scan.nextLine();
@@ -64,9 +47,7 @@ public class Main {
             addDrink = scan.nextLine();
         }
 
-        for (Drink drink : drinks) {
-            totalPrice += drink.calcPrice();
-        }
+        totalPrice = drinks.stream().mapToDouble(Drink::calcPrice).sum();
 
         System.out.println("Would You like to add chips?");
         String addChips = scan.nextLine();
@@ -79,9 +60,7 @@ public class Main {
             addChips = scan.nextLine();
         }
 
-        for(Chips chips : chips){
-            totalPrice += chips.getPrice();
-        }
+        totalPrice = chips.stream().mapToDouble(Chips::getPrice).sum();
 
         System.out.println("Total Price: $" + totalPrice);
         Order newOrder = new Order(sandwiches, chips, drinks);

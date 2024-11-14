@@ -4,9 +4,29 @@ import com.pluralsight.food.*;
 import com.pluralsight.order.Lists;
 import com.pluralsight.toppings.*;
 
+import java.util.List;
 import java.util.Scanner;
+import static com.pluralsight.order.Lists.listBread;
 
-public class UserInterface {
+
+public class SandwichUserInterface {
+
+    Scanner scan = new Scanner(System.in);
+
+    public void sandwichLoop(List<Sandwich> sandwiches, String addAnother){
+        Sandwich sandwich = createSandwich(scan); // Create a new sandwich
+        sandwiches.add(sandwich); // Add to the list of sandwiches
+
+        // Ask if the user wants to add another sandwich
+        System.out.println("Would you like to add another sandwich? (yes/no)");
+        addAnother = scan.nextLine();
+
+        // Handle invalid input for continuing
+        while (!addAnother.equalsIgnoreCase("yes") && !addAnother.equalsIgnoreCase("no")) {
+            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+            addAnother = scan.nextLine();
+        }
+    }
 
     // Method to create a new sandwich
     public Sandwich createSandwich(Scanner scan) {
@@ -14,7 +34,7 @@ public class UserInterface {
 
         // Get bread type
         System.out.println("Select bread type:");
-        for(String bread : Lists.listBread()){
+        for (String bread : listBread()) {
             System.out.println(bread);
         }
         sandwich.setBread(scan.nextLine());
@@ -41,7 +61,7 @@ public class UserInterface {
         String name = "";
         while (!name.equalsIgnoreCase("x")) {
             System.out.println("Select meat or (X) to finish:");
-                Lists.listMeat().forEach(meat -> System.out.println(meat.getName()));
+            Lists.listMeat().forEach(meat -> System.out.println(meat.getName()));
             name = scan.nextLine();
             if (!name.equalsIgnoreCase("x")) {
                 sandwich.addTopping(new Meat(name));  // Add meat to the sandwich
@@ -55,7 +75,7 @@ public class UserInterface {
         String name = "";
         while (!name.equalsIgnoreCase("x")) {
             System.out.println("Select cheese or (X) to finish:");
-                Lists.listCheese().forEach(cheese -> System.out.println(cheese.getName()));
+            Lists.listCheese().forEach(cheese -> System.out.println(cheese.getName()));
             name = scan.nextLine();
             if (!name.equalsIgnoreCase("x")) {
                 sandwich.addTopping(new Cheese(name));  // Add cheese to the sandwich
@@ -69,7 +89,7 @@ public class UserInterface {
         String name = "";
         while (!name.equalsIgnoreCase("x")) {
             System.out.println("Select sauce or (X) to finish:");
-                Lists.listSauces().forEach(sauce -> System.out.println(sauce.getName()));
+            Lists.listSauces().forEach(sauce -> System.out.println(sauce.getName()));
             name = scan.nextLine();
             if (!name.equalsIgnoreCase("x")) {
                 sandwich.addTopping(new Sauce(name));  // Add sauce to the sandwich
@@ -77,11 +97,12 @@ public class UserInterface {
             }
         }
     }
+
     private void getStandardTopping(Scanner scan, Sandwich sandwich) {
         String name = "";
         while (!name.equalsIgnoreCase("x")) {
             System.out.println("Select topping or (X) to finish:");
-                Lists.listToppings().forEach(topping -> System.out.println(topping.getName()));
+            Lists.listToppings().forEach(topping -> System.out.println(topping.getName()));
             name = scan.nextLine();
             if (!name.equalsIgnoreCase("x")) {
                 sandwich.addTopping(new StandardTopping(name));
