@@ -4,96 +4,78 @@ package com.pluralsight.userinterface;
 import com.pluralsight.food.Chips;
 import com.pluralsight.food.Drink;
 import com.pluralsight.food.Sandwich;
-import com.pluralsight.proccessing.ShopFileManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 public class Main {
 
-    private static List<Chips> chips = ShopFileManager.listChips();
-    private static List<Drink> drinks = ShopFileManager.listDrinks();
-    private static List<Drink> selectedDrinks = new ArrayList<>();
-    private static List<Chips> selectedChips = new ArrayList<>();
-    private static List<Sandwich> selectedSandwiches = new ArrayList<>();
-    private static int numChips;
-    private static int numDrinks;
-
+    private static List<Sandwich> sandwiches = new ArrayList<>();
+    public static List<Drink> drinks = new ArrayList<>();
+    public static List<Chips> chips = new ArrayList<>();
 
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Thank you for choosing New Deli.");
-        System.out.println("Let's start by choosing your sandwich.");
+        UserInterface ui = new UserInterface();
+        OrderChip oc = new OrderChip();
+        OrderDrink od = new OrderDrink();
+        String addAnother = "yes";
 
-        String choice = "yes";
-        while (choice.equalsIgnoreCase("yes")) {
-            selectedSandwiches.add(OrderSandwich.createSandwich());
+        // Main loop for sandwich creation
+        while (addAnother.equalsIgnoreCase("yes")) {
+            Sandwich sandwich = ui.createSandwich(scan); // Create a new sandwich
+            sandwiches.add(sandwich); // Add to the list of sandwiches
 
-            System.out.println("Would you like to order another sandwich?");
-            choice = scan.nextLine();
-        }
+            // Display sandwich details to the user
+            System.out.println("Sandwich created: ");
+            System.out.println(sandwich);
 
-        System.out.println("Would you like chips?");
-        String option = scan.nextLine();
-        if (option.equalsIgnoreCase("Yes")) {
+            // Ask if the user wants to add another sandwich
+            System.out.println("Would you like to add another sandwich? (yes/no)");
+            addAnother = scan.nextLine();
 
-            System.out.println("How many bags of chips would you like?");
-            numChips = scan.nextInt();
-            scan.nextLine();
-
-            for(Chips chip : chips){
-                System.out.println(chip.getType());
-            }
-
-            OrderChip.chipSelect(numChips, selectedChips);
-        }
-
-        System.out.println("Would you like drinks?");
-        String input = scan.nextLine();
-        if (input.equalsIgnoreCase("Yes")) {
-            System.out.println("How many drinks would you like?");
-            numDrinks = scan.nextInt();
-            scan.nextLine();
-
-            for(Drink drink : drinks){
-                System.out.println(drink.getFlavor());
-            }
-
-            for (int i = 0; i < numDrinks; i++){
-                String flavor = OrderDrink.flavorSelect();
-                String size = OrderDrink.drinkSizeSelect().toUpperCase();
-
-                selectedDrinks.add(OrderDrink.returnDrinks(size, flavor));
+            // Handle invalid input for continuing
+            while (!addAnother.equalsIgnoreCase("yes") && !addAnother.equalsIgnoreCase("no")) {
+                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+                addAnother = scan.nextLine();
             }
         }
-        System.out.println("Order:");
-        OrderSandwich.sandwichDisplay(selectedSandwiches);
 
-        System.out.println("Your total is: ");
-        System.out.println(totalPrice(selectedChips, selectedDrinks, selectedSandwiches, numChips, numDrinks));
+        double sandwichPrice = 0;
+        for (Sandwich sandwich : sandwiches) {
+            sandwichPrice += sandwich.getPrice();
+        }
 
+        System.out.println("Would you like to add a drink?");
+        String addDrink = scan.nextLine();
+
+        while(addDrink.equalsIgnoreCase("YES")){
+
+            drinks.add(od.returnDrinks(od.drinkSizeSelect(), od.flavorSelect()));
+
+            System.out.println("Would you like to add another?");
+            addDrink = scan.nextLine();
+        }
+
+        double drinkPrice = 0;
+        for (Drink drink : drinks) {
+            drinkPrice += drink.calcPrice();
+        }
+
+        System.out.println("Would You like to add chips?");
+        String addChips = scan.nextLine();
+
+        while(addChips.equalsIgnoreCase("yes")){
+
+            chips.add(oc.returnChips(oc.chipSelect()));
+
+            System.out.println("Would you like to add another?");
+            addChips = scan.nextLine();
+        }
+
+        double totalPrice = sandwichPrice + /*chipsPrice*/  drinkPrice;
+
+        System.out.println("Total Price: $" + totalPrice);
     }
-    public static double totalPrice(List<Chips> chips, List<Drink> drinks, List<Sandwich> sandwiches, int chipQuant, int drinkQuant){
-        double total = 0;
-
-        for(Sandwich sandwich : sandwiches){
-            total += sandwich.getPrice();
-        }
-
-
-        for(Chips chip : chips){
-           total += (chip.getPrice() * chipQuant);
-        }
-
-        for(Drink drink : drinks){
-            total += (drink.calcPrice() * drinkQuant);
-        }
-
-        return total;
-    }
-
 }

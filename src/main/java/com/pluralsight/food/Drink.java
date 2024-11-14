@@ -29,7 +29,7 @@ public class Drink {
 
     public double calcPrice() {
         double price = 0;
-        switch (getSize()) {
+        switch (size.toUpperCase()) {
             case "S" -> price = 2.00;
             case "M" -> price = 2.50;
             case "L" -> price = 3.00;
@@ -37,12 +37,10 @@ public class Drink {
         return price;
     }
 
-
     @Override
     public String toString() {
         return "Drink{" +
                 "flavor='" + flavor + '\'' +
-                ", price=" + price +
                 ", size='" + size + '\'' +
                 '}';
     }

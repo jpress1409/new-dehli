@@ -12,9 +12,9 @@ public class Cheese extends Topping {
     public double calculatePrice(String size) {
         double price = 0;
         switch (size) {
-            case "Small" -> price = 0.75;
-            case "Medium" -> price = 1.5;
-            case "Large" -> price = 2.25;
+            case "S" -> price = 0.75;
+            case "M" -> price = 1.5;
+            case "L" -> price = 2.25;
         }
         return price;
     }

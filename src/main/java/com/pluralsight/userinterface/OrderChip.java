@@ -8,14 +8,17 @@ import java.util.Scanner;
 public class OrderChip {
     private static Scanner scan = new Scanner(System.in);
 
-    public static void chipSelect(int chipNum, List<Chips> selectedChips){
-                for(int i = 0; i < chipNum; i++){
-                    System.out.println("Flavor for bag " + (i + 1));
-                    String flavor = scan.nextLine();
-                    Chips chip = new Chips(flavor);
-                    selectedChips.add(chip);
-                }
+    public String chipSelect(){
 
+        for(Chips chips : Lists.listChips()){
+            System.out.println(chips.getType());
+        }
+
+        System.out.println("What flavor would you like?");
+        return scan.nextLine();
+    }
+    public Chips returnChips(String type){
+        return new Chips(type);
     }
 
 }

@@ -11,9 +11,9 @@ public class Meat extends Topping {
     public double calculatePrice(String size) {
         double price = 0;
         switch (size) {
-            case "Small" -> price = 1.00;
-            case "Medium" -> price = 2.00;
-            case "Large" -> price = 3.00;
+            case "S" -> price = 1.00;
+            case "M" -> price = 2.00;
+            case "L" -> price = 3.00;
         }
         return price;
     }

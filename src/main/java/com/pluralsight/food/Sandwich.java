@@ -9,12 +9,14 @@ public class Sandwich {
     private String size;
     private boolean toasted;
     private List<Topping> toppings;
+    private double price;
 
-    public Sandwich(String bread, String size, boolean toasted) {
+    public Sandwich() {
         this.bread = bread;
         this.size = size;
         this.toasted = toasted;
         this.toppings = new ArrayList<>();
+        this.price = price;
     }
 
 
@@ -22,11 +24,19 @@ public class Sandwich {
         toppings.add(topping);
     }
 
-    public double getPrice(){
-        switch(getSize()){
-            case "Small" -> price = 5.5;
-            case "Medium" -> price = 7;
-            case "Large" -> price = 8.5;
+    public double getPrice() {
+
+        double price = 0;
+        switch (size) {
+            case "S" -> price = 5.5;
+            case "M" -> price = 7;
+            case "L" -> price = 8.5;
+            default -> System.out.println("Invalid size, defaulting to size 'M'");
+        }
+
+        // Add the price of each topping
+        for (Topping topping : toppings) {
+            price += topping.calculatePrice(size);
         }
 
         return price;
@@ -40,12 +50,12 @@ public class Sandwich {
         this.bread = bread;
     }
 
-    public static String getSize() {
+    public String getSize() {
         return size;
     }
 
-    public static void setSize(String size) {
-        Sandwich.size = size;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public boolean isToasted() {
@@ -55,32 +65,14 @@ public class Sandwich {
     public void setToasted(boolean toasted) {
         this.toasted = toasted;
     }
-    public static String[] listBread(){
-        String[] breads = new String[4];
-        breads[0] = "White";
-        breads[1] = "Wheat";
-        breads[2] = "Rye";
-        breads[3] = "Wrap";
-
-        return breads;
-    }
-    public static void displayBread(String [] breads){
-        for(String bread : breads){
-            System.out.println(bread);
-        }
-    }
 
     @Override
     public String toString() {
         return "Sandwich{" +
-                "size=" + size + '\'' +
-                ", bread='" + bread + '\'' +
-                ", price=" + price + '\'' +
-                ", meat=" + meat + '\'' +
-                ", cheese=" + cheese + '\'' +
-                ", toppings=" + toppings + '\'' +
-                ", sauces=" + sauces + '\'' +
-                ", toasted=" + toasted + '\'' +
+                "bread='" + bread + '\'' +
+                ", size='" + size + '\'' +
+                ", toasted=" + toasted +
+                ", toppings=" + toppings +
                 '}';
     }
 }
