@@ -2,9 +2,11 @@ package com.pluralsight.food;
 
 public class Chips {
     private String type;
+    private String price;
 
     public Chips(String type) {
         this.type = type;
+        this.price = price;
     }
 
     public String getType() {

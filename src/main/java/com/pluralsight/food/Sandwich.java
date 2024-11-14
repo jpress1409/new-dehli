@@ -24,6 +24,14 @@ public class Sandwich {
         toppings.add(topping);
     }
 
+    public List<Topping> getToppings() {
+        return toppings;
+    }
+
+    public void setToppings(List<Topping> toppings) {
+        this.toppings = toppings;
+    }
+
     public double getPrice() {
 
         double price = 0;

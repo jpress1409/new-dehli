@@ -4,6 +4,9 @@ package com.pluralsight.userinterface;
 import com.pluralsight.food.Chips;
 import com.pluralsight.food.Drink;
 import com.pluralsight.food.Sandwich;
+import com.pluralsight.proccessing.Order;
+import com.pluralsight.proccessing.ShopFileManager;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,9 +21,11 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         UserInterface ui = new UserInterface();
+
         OrderChip oc = new OrderChip();
         OrderDrink od = new OrderDrink();
         String addAnother = "yes";
+        double totalPrice = 0;
 
         // Main loop for sandwich creation
         while (addAnother.equalsIgnoreCase("yes")) {
@@ -42,9 +47,8 @@ public class Main {
             }
         }
 
-        double sandwichPrice = 0;
         for (Sandwich sandwich : sandwiches) {
-            sandwichPrice += sandwich.getPrice();
+            totalPrice += sandwich.getPrice();
         }
 
         System.out.println("Would you like to add a drink?");
@@ -58,9 +62,8 @@ public class Main {
             addDrink = scan.nextLine();
         }
 
-        double drinkPrice = 0;
         for (Drink drink : drinks) {
-            drinkPrice += drink.calcPrice();
+            totalPrice += drink.calcPrice();
         }
 
         System.out.println("Would You like to add chips?");
@@ -74,8 +77,12 @@ public class Main {
             addChips = scan.nextLine();
         }
 
-        double totalPrice = sandwichPrice + /*chipsPrice*/  drinkPrice;
+        for(Chips chips : chips){
+            totalPrice += chips.getPrice();
+        }
 
         System.out.println("Total Price: $" + totalPrice);
+        
+        ShopFileManager.saveReceipt(sandwiches, chips, drinks);
     }
 }
