@@ -4,6 +4,8 @@ package com.pluralsight.userinterface;
 import com.pluralsight.food.Chips;
 import com.pluralsight.food.Drink;
 import com.pluralsight.food.Sandwich;
+import com.pluralsight.order.OrderChip;
+import com.pluralsight.order.OrderDrink;
 import com.pluralsight.proccessing.Order;
 import com.pluralsight.proccessing.ShopFileManager;
 
@@ -82,7 +84,8 @@ public class Main {
         }
 
         System.out.println("Total Price: $" + totalPrice);
-        
-        ShopFileManager.saveReceipt(sandwiches, chips, drinks);
+        Order newOrder = new Order(sandwiches, chips, drinks);
+
+        ShopFileManager.saveReceipt(sandwiches, chips, drinks, newOrder.calcPrice());
     }
 }

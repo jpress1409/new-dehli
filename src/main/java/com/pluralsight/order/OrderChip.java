@@ -1,8 +1,7 @@
-package com.pluralsight.userinterface;
+package com.pluralsight.order;
 
 import com.pluralsight.food.Chips;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class OrderChip {

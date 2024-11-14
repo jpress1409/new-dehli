@@ -19,8 +19,17 @@ public class Order {
         this.price = price;
     }
 
-    public double getPrice() {
-    return 0;
+    public double calcPrice() {
+        for(Sandwich sandwich : sandwiches){
+            price += sandwich.getPrice();
+        }
+        for(Drink drink : drinks){
+            price += drink.calcPrice();
+        }
+        for(Chips chips : chips){
+            price += chips.getPrice();
+        }
+    return price;
     }
 
     public void setPrice(double price) {

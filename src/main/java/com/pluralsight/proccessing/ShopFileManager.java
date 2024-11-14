@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ShopFileManager {
 
-    public static void saveReceipt(List<Sandwich> sandwiches, List<Chips> chips, List<Drink> drinks){
+    public static void saveReceipt(List<Sandwich> sandwiches, List<Chips> chips, List<Drink> drinks, double total){
         LocalDateTime dateTime = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("MM-dd-yyyy_HH-mm-ss");
         String pathName = "C:\\Users\\jpres\\OneDrive\\Desktop\\Pluralsight\\Capstones\\new-deli\\reciepts\\";
@@ -25,7 +25,12 @@ public class ShopFileManager {
                 builder.append(sandwich.getSize()).append(" | ");
                 builder.append(sandwich.getToppings()).append(" | ");
                 builder.append(sandwich.getPrice()).append(" | ");
+                if(sandwich.isToasted()) {
+                    builder.append("Toasted").append(" | ");
 
+                }else{
+                    builder.append("Not Toasted").append(" | ");
+                }
                 String result = builder.toString();
                 writer.write(result);
                 writer.newLine();
@@ -50,6 +55,10 @@ public class ShopFileManager {
                 writer.write(result);
                 writer.newLine();
             }
+
+            writer.write("Total Price: $" + total);
+            writer.newLine();
+
 
         } catch (Exception e) {
             e.printStackTrace();

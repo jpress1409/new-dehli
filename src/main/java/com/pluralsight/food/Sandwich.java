@@ -1,7 +1,8 @@
 package com.pluralsight.food;
 
+import com.pluralsight.toppings.Topping;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Sandwich {

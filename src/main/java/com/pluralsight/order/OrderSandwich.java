@@ -1,6 +1,7 @@
-package com.pluralsight.userinterface;
+package com.pluralsight.order;
 
 import com.pluralsight.food.*;
+import com.pluralsight.toppings.Topping;
 
 import java.util.List;
 import java.util.Scanner;
