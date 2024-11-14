@@ -23,7 +23,7 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         SandwichUserInterface ui = new SandwichUserInterface();
-
+        Order newOrder = new Order(sandwiches, chips, drinks);
         OrderChip oc = new OrderChip();
         OrderDrink od = new OrderDrink();
         String addAnother = "yes";
@@ -62,8 +62,9 @@ public class Main {
 
         totalPrice = chips.stream().mapToDouble(Chips::getPrice).sum();
 
-        System.out.println("Total Price: $" + totalPrice);
-        Order newOrder = new Order(sandwiches, chips, drinks);
+        Checkout.displayOrder(totalPrice, sandwiches, chips, drinks);
+
+        Checkout.checkoutDisplay(scan, totalPrice);
 
         ShopFileManager.saveReceipt(sandwiches, chips, drinks, newOrder.calcPrice());
     }
