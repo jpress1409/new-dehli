@@ -17,7 +17,7 @@ public class ShopFileManager {
         String fileName = dateTime.format(format);
 
         System.out.println(pathName+fileName);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(pathName + fileName, true))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(pathName + fileName + ".txt", true))){
 
             for (Sandwich sandwich : sandwiches) {
                 StringBuilder builder = new StringBuilder();
