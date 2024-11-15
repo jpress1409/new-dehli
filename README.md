@@ -1,8 +1,8 @@
-# Virtual Business Ledger
+# New Dehli POS System
 
-## Accounting Tool for Businesses
+## Ordering system for New Dehli Sandwich Shop
 
-This application is a way to keep track of business transactions and organize them by date, vendor and type. The purpose is to streamline accounting for business and the any business owner would benefit from using this app.
+This application is a Point of Sale system for a sandwich shop call "New Dehli"
 
 ## User Stories
 
