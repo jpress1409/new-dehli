@@ -6,7 +6,6 @@ import com.pluralsight.food.Drink;
 import com.pluralsight.food.Sandwich;
 import com.pluralsight.order.OrderChip;
 import com.pluralsight.order.OrderDrink;
-import com.pluralsight.proccessing.Order;
 import com.pluralsight.proccessing.ShopFileManager;
 
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         SandwichUserInterface ui = new SandwichUserInterface();
-        Order newOrder = new Order(sandwiches, chips, drinks);
         OrderChip oc = new OrderChip();
         OrderDrink od = new OrderDrink();
         String addAnother = "yes";
@@ -32,9 +30,15 @@ public class Main {
         // Main loop for sandwich creation
         while (addAnother.equalsIgnoreCase("yes")) {
             ui.sandwichLoop(sandwiches, addAnother);
+
+            // Ask if the user wants to add another sandwich
+            System.out.println("Would you like to add another sandwich? (yes/no)");
+            addAnother = scan.nextLine();
         }
 
-        totalPrice = sandwiches.stream().mapToDouble(Sandwich::getPrice).sum();
+        for(Sandwich sandwich : sandwiches){
+            totalPrice += sandwich.getPrice();
+        }
 
         System.out.println("Would you like to add a drink?");
         String addDrink = scan.nextLine();
@@ -47,8 +51,9 @@ public class Main {
             addDrink = scan.nextLine();
         }
 
-        totalPrice = drinks.stream().mapToDouble(Drink::calcPrice).sum();
-
+        for(Drink drink : drinks){
+            totalPrice += drink.calcPrice();
+        }
         System.out.println("Would You like to add chips?");
         String addChips = scan.nextLine();
 
@@ -60,12 +65,13 @@ public class Main {
             addChips = scan.nextLine();
         }
 
-        totalPrice = chips.stream().mapToDouble(Chips::getPrice).sum();
-
+            for(Chips chip : chips){
+                totalPrice += chip.getPrice();
+            }
         Checkout.displayOrder(totalPrice, sandwiches, chips, drinks);
 
         Checkout.checkoutDisplay(scan, totalPrice);
 
-        ShopFileManager.saveReceipt(sandwiches, chips, drinks, newOrder.calcPrice());
+        ShopFileManager.saveReceipt(sandwiches, chips, drinks, totalPrice);
     }
 }

@@ -13,11 +13,7 @@ public class Sandwich {
     private double price;
 
     public Sandwich() {
-        this.bread = bread;
-        this.size = size;
-        this.toasted = toasted;
         this.toppings = new ArrayList<>();
-        this.price = price;
     }
 
 
@@ -27,10 +23,6 @@ public class Sandwich {
 
     public List<Topping> getToppings() {
         return toppings;
-    }
-
-    public void setToppings(List<Topping> toppings) {
-        this.toppings = toppings;
     }
 
     public double getPrice() {

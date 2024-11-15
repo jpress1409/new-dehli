@@ -44,7 +44,7 @@ public class Checkout {
                 System.out.println("Insufficient funds.");
             }else{
                 change = money - cost;
-                System.out.println("Your change is $");
+                System.out.println("Your change is $" + change);
             }
         }
     }

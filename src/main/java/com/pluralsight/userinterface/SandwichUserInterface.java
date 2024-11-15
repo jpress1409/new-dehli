@@ -17,9 +17,6 @@ public class SandwichUserInterface {
         Sandwich sandwich = createSandwich(scan); // Create a new sandwich
         sandwiches.add(sandwich); // Add to the list of sandwiches
 
-        // Ask if the user wants to add another sandwich
-        System.out.println("Would you like to add another sandwich? (yes/no)");
-        addAnother = scan.nextLine();
 
         // Handle invalid input for continuing
         while (!addAnother.equalsIgnoreCase("yes") && !addAnother.equalsIgnoreCase("no")) {

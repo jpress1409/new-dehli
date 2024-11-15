@@ -1,0 +1,4 @@
+rye | S | [Meat{name='ham'}, Meat{name='bacon'}, Cheese{name='swiss'}, Cheese{name=''}, StandardTopping{name='pickles'}, Sauce{name='ranch'}] | 9.0 | Not Toasted | 
+bbq | bbq | 1.5 | 
+coke | S | 2.0 | 
+Total Price: $12.5

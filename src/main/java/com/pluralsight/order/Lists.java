@@ -8,11 +8,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Lists {
-    public static List<Topping> listAllToppings() {
-        return Stream.of(listSauces(), listToppings(), listCheese(), listMeat())
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
-    }
     public static List<Topping> listSauces() {
         return Stream.of(
                 new Sauce("Mayo"),
